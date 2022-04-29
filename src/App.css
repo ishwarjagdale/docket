@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#root {
+    font-family: Poppins, sans-serif;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dark {
+    background-color: #161b22;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dark div {
+    border-color: #30363d;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.dark .hover {
+    box-shadow: none;
 }
 
-.App-link {
-  color: #61dafb;
+.dark h1, .dark h3, .dark svg, .dark input, .dark b {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: normal;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dark button {
+    background-color: #2b3a50;
+}
+
+.colors {
+    margin: 20px 0;
+}
+
+.colors li {
+    margin: 20px 0;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 100%;
+}
+
+.hover {
+    box-shadow: 1px 1px 10px 1px #d3d3d3;
+}
+
+.hover:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Scroll Bar CSS */
+html {
+    overflow-y: overlay;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* Scroll Bar CSS END */
+
+.actions-bar li {
+    margin: 0 8px;
+}
+.actions-bar button > svg {
+    fill: #555555;
+}
+
+.note-body {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
