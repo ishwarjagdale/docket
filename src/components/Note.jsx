@@ -6,16 +6,11 @@ class Note extends React.Component {
 
         this.state = {};
 
-        this.toggleActions = this.toggleActions.bind(this);
-    }
-
-    toggleActions(state) {
-        document.getElementById(`actions-bar-${this.props.data.id}`).classList.toggle('hidden');
     }
 
     render() {
         return (
-            <div onMouseEnter={() => this.toggleActions(0)} onMouseLeave={() => this.toggleActions(1)} key={this.props.data.id} className={`bg-[${this.props.data.color}] p-8 overflow-hidden rounded-2xl relative w-[320px] h-[300px] m-4 hover`}>
+            <div key={this.props.data.id} className={`bg-[${this.props.data.color}] p-8 overflow-hidden cursor-pointer rounded-2xl relative w-[320px] h-[300px] m-4 hover`}>
                 <div className={"absolute bottom-[-50px] right-[-80px]"}>
                     {
                         this.props.data.mark &&
@@ -45,15 +40,6 @@ class Note extends React.Component {
                                 this.props.data.date
                             }
                         </span>
-                        <ul id={`actions-bar-${this.props.data.id}`} className={"actions-bar hidden"}>
-                            <li>
-                                <button className={"px-2"}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                    </svg>
-                                </button>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

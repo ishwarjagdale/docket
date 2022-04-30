@@ -8,9 +8,9 @@
     display: flex;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
     position: relative;
     transition: all 0.3s ease-in-out;
-
 }
 
 .dark {
@@ -39,9 +39,11 @@
 }
 
 .colors li {
-    margin: 20px 0;
+    margin: 10px 0;
     cursor: pointer;
     padding: 1rem;
+    aspect-ratio: 1;
+    height: 34px;
     border-radius: 100%;
 }
 
@@ -82,10 +84,13 @@ html {
 /* Scroll Bar CSS END */
 
 .actions-bar li {
-    margin: 0 8px;
+    margin: 0 2px 20px;
 }
 .actions-bar button > svg {
-    fill: #555555;
+    stroke: black;
+}
+.actions-bar button {
+    background-color: transparent;
 }
 
 .note-body {
@@ -93,4 +98,19 @@ html {
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    color: rgba(0,0,0,0.8);
+}
+.actions-bar {
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 0.25);
+    background-color: aliceblue;
+}
+
+.notification {
+    padding: 16px 24px;
+    border-radius: 32px;
+    font-weight: 600;
+    width: 100%;
+    color: rgba(0,0,0,0.7);
+    background-color: aliceblue;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 0.25);
 }
