@@ -2,7 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+body {
+    background: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v960-ning-30.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=a133850ec0ea076cc42b0efa22390cd3");
+    background: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/4d845686128681.5d909dad4ddd3.jpg");
+    background-size: cover;
+}
 
+#root.dark {
+    background: url("https://wallpaperaccess.com/full/1092758.jpg");
+    background: url("https://wallpaperaccess.com/full/862213.jpg");
+    background-size: cover;
+}
+*/
 #root {
     font-family: Poppins, sans-serif;
     display: flex;
@@ -25,13 +37,15 @@
     box-shadow: none;
 }
 
-.dark h1, .dark h3, .dark svg, .dark input, .dark b {
+.dark h1, .dark h3 {
     color: rgba(255, 255, 255, 0.9);
     font-weight: normal;
 }
 
-.dark button {
+.dark .darkb {
     background-color: #2b3a50;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: normal;
 }
 
 .colors {
@@ -48,7 +62,7 @@
 }
 
 .hover {
-    box-shadow: 1px 1px 10px 1px #d3d3d3;
+
 }
 
 .hover:hover {
@@ -107,10 +121,153 @@ html {
 
 .notification {
     padding: 16px 24px;
-    border-radius: 32px;
-    font-weight: 600;
-    width: 100%;
-    color: rgba(0,0,0,0.7);
-    background-color: aliceblue;
+    border-radius: 8px;
+    font-size: 14px;
+    width: fit-content;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(30, 144, 255, 0.9);
     box-shadow: 0 0 10px 0 rgb(0 0 0 / 0.25);
+    margin-top: 20px;
+}
+
+.ani-nots {
+    opacity: 0;
+    animation: nots 5s;
+}
+
+.entrance {
+    animation: inn 0.2s;
+}
+
+.entrance-slow {
+    animation: fin 1s;
+}
+
+.grad {
+    background-image: linear-gradient(to right, #8360c3, #2ebf91);
+}
+
+.typewriter {
+    animation: writer 1s;
+}
+
+@keyframes writer {
+    from {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        width: 0;
+    }
+
+    to {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        width: 100%;
+    }
+
+}
+
+@keyframes fin {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+.fade {
+    animation: fadeaway 0.3s;
+}
+
+input:-webkit-autofill {
+    -webkit-background-clip: text;
+}
+
+input[type=password] {
+    -webkit-text-security: square;
+}
+
+@keyframes fadeaway {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes inn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes nots {
+    0% {
+        margin-bottom: -20px;
+        opacity: 0;
+    }
+    10% {
+        margin-bottom: 0;
+        opacity: 1;
+    }
+    90% {
+        margin-bottom: 0;
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.success {
+    background-color: mediumseagreen;
+}
+
+.info {
+    background-color: lightcoral;
+}
+
+.icos button {
+    margin: 0 10px;
+}
+
+.mark {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: scale(2);
+}
+
+.blinker {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.5;
+    }
+    25% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
 }
