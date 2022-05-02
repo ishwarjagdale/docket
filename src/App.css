@@ -18,11 +18,9 @@ body {
 #root {
     font-family: Poppins, sans-serif;
     display: flex;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
     position: relative;
-    transition: all 0.3s ease-in-out;
+    transition: background-color 0.3s ease;
 }
 
 .dark {
@@ -270,4 +268,13 @@ input[type=password] {
         opacity: 0;
     }
 
+}
+
+.hofo {
+    width: 100%;
+    max-width: 350px;
+    position: relative;
+}
+.hofo input {
+    width: 100%;
 }
