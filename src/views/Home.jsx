@@ -1,4 +1,7 @@
 import React from "react";
+import {login, verifyUser} from "../api/auth";
+import {Navigate} from "react-router-dom";
+import {notify} from "../components/notifier";
 
 class Home extends React.Component {
     constructor(props) {
@@ -18,11 +21,19 @@ class Home extends React.Component {
                 "pikkkkachu!"
             ],
             started: false,
+            name: null,
+            email: "",
+            password: "",
+            loaded: false,
+            userFound: false,
+            register: false,
         };
 
         this.changeText = this.changeText.bind(this);
         this.getStarted = this.getStarted.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleRegistration = this.handleRegistration.bind(this);
     }
 
     changeText(e) {
@@ -31,13 +42,31 @@ class Home extends React.Component {
         e.target.classList.toggle("typewriter");
     }
 
+    handleRegistration() {
+        this.setState({register: !this.state.register});
+    }
+
     getStarted() {
         this.setState({started: true});
     }
 
     handleSubmit(e) {
         e.preventDefault();
+        let creds = {name: this.state.name, email: this.state.email, password: this.state.password};
+        login(creds, this.state.register).then((res) => {
+            if(res) {
+                setTimeout(() => {
+                    window.location.href = "./app";
+                }, 2000);
+            }
+        })
+    }
 
+    handleChange(e) {
+        this.setState((state) => {state[e.target.name] = e.target.value});
+    }
+
+    componentDidMount() {
     }
 
     render() {
@@ -54,16 +83,27 @@ class Home extends React.Component {
                         this.state.started ?
                             <>
                                 <form onSubmit={this.handleSubmit} className={"flex hofo flex-col p-8 py-4 rounded-2xl mt-12 items-center border-2 border-black entrance"}>
-                                    <input type={"email"} name={"email"} required={true} placeholder={"email"} className={"mb-4 font-bold text-lg bg-transparent outline-none border-none text-center placeholder:text-gray-800 p-2"} />
-                                    <input type={"password"} name={"password"} required={true} placeholder={"password"} min={6} className={"mb-4 font-bold text-lg bg-transparent outline-none border-none text-center placeholder:text-gray-800 p-2"} max={20}/>
-                                    <button type={"submit"} name={"submit"} value={"Sign In"} className={"mt-2 p-2 px-6 w-fit hover:bg-black hover:text-[rgba(255,255,255,0.8)] transition-all rounded-full border-black border-2 font-bold"}>Sign In</button>
+                                    {
+                                        this.state.register && <input autoFocus onChange={this.handleChange} type={"text"} name={"name"}
+                                            required={true} placeholder={"name"}
+                                            className={"mb-4 font-bold text-lg bg-transparent outline-none border-none text-center placeholder:text-gray-800 p-2"}/>
+                                    }
+                                    <input autoFocus={!this.state.register} onChange={this.handleChange} type={"email"} name={"email"} required={true} placeholder={"email"} className={"mb-4 font-bold text-lg bg-transparent outline-none border-none text-center placeholder:text-gray-800 p-2"} />
+                                    <input onChange={this.handleChange} type={"password"} name={"password"} required={true} placeholder={"password"} min={6} className={"mb-4 font-bold text-lg bg-transparent outline-none border-none text-center placeholder:text-gray-800 p-2"} max={20}/>
+                                    <button type={"submit"} name={"submit"} value={"Sign In"} className={"mt-2 p-2 px-6 w-full hover:bg-black hover:text-[rgba(255,255,255,0.8)] transition-all rounded-full border-black border-2 font-bold"}>Sign In</button>
+                                    <button type={"button"} name={"register"} value={"register"} className={"mt-2 p-2 font-bold text-sm underline underline-offset-2"} onClick={this.handleRegistration}>{
+                                        !this.state.register ?
+                                            "create an account" :
+                                            "already have an account"
+                                    }</button>
+
                                 </form>
                             </>
                             :
                             <button onClick={this.getStarted} className={"mt-12 p-3 px-6 hover:bg-black hover:text-[rgba(255,255,255,0.8)] transition-all rounded-full border-black border-2 font-bold"}>get started</button>
                     }
                 </div>
-                <div className={"p-8 absolute bottom-0 w-full"}>
+                <div className={"p-8 absolute bottom-0 z-20 w-full"}>
                     <a href={"https://github.com/ishwarjagdale"} target={"_blank"} className={"text-gray-800 text-lg font-bold"}>@dev</a>
                 </div>
             </div>

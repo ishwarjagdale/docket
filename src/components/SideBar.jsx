@@ -24,6 +24,7 @@ class SideBar extends React.Component {
     }
 
     togglePop() {
+        console.log("clicked");
         this.setState({visiblePop: !this.state.visiblePop});
     }
 
@@ -31,14 +32,14 @@ class SideBar extends React.Component {
         return (
             <>
                 {
-                    this.state.visiblePop && <Note new={true} color={this.state.current} togglePop={this.togglePop} />
+                    this.state.visiblePop && <Note new={true} color={this.state.current} reload={this.props.reload} togglePop={this.togglePop} />
                 }
-                <div className={"flex flex-col items-center p-8 w-2/12 border-r min-w-[160px] mr-16"}>
+                <div className={"flex flex-col items-center sticky top-0 p-8 w-2/12 border-r min-w-[160px] h-screen"}>
                     <div id={"brand"} className={"w-full mb-32"}>
-                        <a href={"/"}><h1 className={"font-bold text-2xl font-pops text-center"}>Docket</h1></a>
+                        <a href={"/"}><h1 className={"font-bold text-2xl font-pops text-center"}>docket</h1></a>
                     </div>
                     <div className={"flex flex-col items-center my-4"}>
-                        <button className={"bg-black shadow-2xl rounded-full p-4 hover:scale-105 darkb"} onClick={this.togglePop} disabled={this.state.visiblePop}>
+                        <button id={'new-note-btn'} className={"bg-black shadow-2xl rounded-full p-4 hover:scale-105 darkb"} onClick={this.togglePop} disabled={this.state.visiblePop}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={3}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                             </svg>

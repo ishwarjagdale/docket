@@ -34,9 +34,9 @@ class NoteCard extends React.Component {
                     }
                 </div>
                 <div className={"flex flex-col justify-between w-full h-full"}>
-                    <p className={"note-body font-bold text-xl text-left z-10 w-full"}>
+                    <p className={`note-body font-bold text-xl text-left z-10 w-full ${!this.props.data.title.length && 'text-gray-400 italic'}`}>
                         {
-                            this.props.data.title ? this.props.data.title : this.props.data.password ? "* This is a password protected note" : this.props.data.body
+                            this.props.data.title.length ? this.props.data.title : "__no_title__"
                         }
                     </p>
 

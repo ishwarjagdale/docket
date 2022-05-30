@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (-webkit-device-pixel-ratio: 1.25) {
+    #root {
+        zoom: 0.8;
+    }
+
+    .min-h-screen, .h-screen {
+        height: 125vh!important;
+    }
+}
+@media (-webkit-device-pixel-ratio: 1.5) {
+    #root {
+        zoom: 0.666666667;
+    }
+
+    .min-h-screen, .h-screen {
+        height: 150vh!important;
+    }
+}
 /*
 body {
     background: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v960-ning-30.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=a133850ec0ea076cc42b0efa22390cd3");
@@ -64,7 +82,7 @@ body {
 }
 
 .hover:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     transition: all 0.3s ease-in-out;
 }
 
@@ -99,7 +117,7 @@ html {
     margin: 0 2px 20px;
 }
 .actions-bar button > svg {
-    stroke: black;
+
 }
 .actions-bar button {
     background-color: transparent;
@@ -110,8 +128,17 @@ html {
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: rgba(0,0,0,0.8);
+    color: rgba(0,0,0,0.7);
+    width: 100%;
 }
+.top-bar {
+    background: white;
+    border-radius: 2rem;
+}
+.dark .top-bar {
+    background: #161b22;
+}
+
 .actions-bar {
     box-shadow: 0 0 10px 0 rgb(0 0 0 / 0.25);
     background-color: aliceblue;
@@ -142,7 +169,8 @@ html {
 }
 
 .grad {
-    background-image: linear-gradient(to right, #8360c3, #2ebf91);
+    /*background-image: linear-gradient(to right, #cf3aff, #00ffae);*/
+    background: url("https://images.wallpaperscraft.com/image/single/notebook_paper_clips_surface_170140_2560x1080.jpg");
 }
 
 .typewriter {
@@ -236,6 +264,9 @@ input[type=password] {
 .info {
     background-color: lightcoral;
 }
+.failed {
+    background-color: coral;
+}
 
 .icos button {
     margin: 0 10px;
@@ -277,4 +308,37 @@ input[type=password] {
 }
 .hofo input {
     width: 100%;
+}
+
+#menu li:hover {
+    background: rgb(228, 228, 228);
+}
+
+#menu {
+    width: 200px;
+}
+
+#menu a {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+}
+
+#menu span {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin: 0 12px;
+}
+
+
+#noti-stack {
+    margin: 2.5rem;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
 }

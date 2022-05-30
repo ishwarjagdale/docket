@@ -10,6 +10,7 @@ function push(node, timeout) {
 }
 
 function notify(str, tempo) {
+    console.log(str, tempo);
     let notification = document.createElement("span");
     notification.id = counter.toString();
     counter++;
