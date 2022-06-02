@@ -5,7 +5,7 @@ const { expressjwt: jwt } = require("express-jwt");
 const db = require("./database");
 const {verify} = require("jsonwebtoken");
 const {getUser} = require("./database");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 let sessions  = {
