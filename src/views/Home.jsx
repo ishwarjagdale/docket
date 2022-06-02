@@ -1,23 +1,22 @@
 import React from "react";
-import {login, verifyUser} from "../api/auth";
-import {Navigate} from "react-router-dom";
-import {notify} from "../components/notifier";
+import {login} from "../api/auth";
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            ps: ["i can take notes 🗒️ for you!",
+            ps: [
+                "i can take notes 🗒️ for you!",
                 "this is cloud ✨🗒️☁️✨ notes, magic!!",
-                "i- i'm confused",
+                /*"i- i'm confused",
                 "I remember it 🧣 all too well, yeah",
                 "not in mood, later",
                 "i don't know what i do",
                 "Ɛ==== tada ===>",
                 "are you lost baby girl? 😏",
                 "And don't you worry your pretty, little mind",
-                "FUCk the patriarchy",
+                "FUCk the patriarchy",*/
                 "pikkkkachu!"
             ],
             started: false,
