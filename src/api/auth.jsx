@@ -4,10 +4,10 @@ import {notify} from "../components/notifier";
 axios.defaults.withCredentials = true;
 let token = null;
 let inProgress = false;
-let api_url = 'https://docket-note.herokuapp.com/';
+let api_url = 'https://docket-note.herokuapp.com';
 
 async function login(credentials, register=false) {
-    return await axios.post(api_url + register? "/register" : "/login", credentials).then((res) => {
+    return await axios.post(api_url + (register? "/register" : "/login"), credentials).then((res) => {
         if(res.status === 200) {
             localStorage.setItem("user", JSON.stringify(res.data));
             notify(`${register ? 'Registered' : 'Logged'} In Successfully!`, "success");
@@ -52,7 +52,7 @@ function verifyUser() {
 }
 
 async function getNotes(noteId=null) {
-    return await axios.get(api_url + noteId ? `/api/notes/${noteId}` : "/api/notes").then((res) => {
+    return await axios.get(api_url + (noteId ? `/api/notes/${noteId}` : "/api/notes")).then((res) => {
         if(res.status === 200) {
             return res.data;
         }
