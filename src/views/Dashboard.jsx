@@ -193,9 +193,9 @@ class Dashboard extends React.Component {
                             </ul>
                         </div>
                         <div className={"flex flex-col w-full overflow-y-scroll"}>
-                            <section className={"flex flex-col mb-8 h-full"}>
+                            <section className={"flex flex-col mb-8 h-full overflow-y-scroll"}>
                                 <h3 className={"text-4xl mt-8 mb-4 font-bold p-4"}>Notes</h3>
-                                <div className={"flex flex-wrap overflow-y-scroll"}>
+                                <div className={"flex flex-wrap"}>
                                     {
                                         this.state.notesLoaded &&
                                         this.state.notes.length ?
