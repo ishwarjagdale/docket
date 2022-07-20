@@ -9,15 +9,18 @@ class Home extends React.Component {
             ps: [
                 "i can take notes 🗒️ for you!",
                 "this is cloud ✨🗒️☁️✨ notes, magic!!",
+                "secure 🔒 notes!!",
+                /*"Ɛ==== tada ===>",
                 "i- i'm confused",
                 "I remember it 🧣 all too well, yeah",
                 "not in mood, later",
                 "i don't know what i do",
-                /*"Ɛ==== tada ===>",
                 "are you lost baby girl? 😏",
-                */"And don't you worry your pretty, little mind",
+                "And don't you worry your pretty, little mind",
                 "FUCk the patriarchy",
                 "pikkkkachu!"
+                */
+
             ],
             started: false,
             name: null,
