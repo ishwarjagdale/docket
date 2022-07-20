@@ -4,7 +4,7 @@ import {notify} from "../components/notifier";
 axios.defaults.withCredentials = true;
 let token = null;
 let inProgress = false;
-let api_url = '';
+let api_url = 'https://docket-note.herokuapp.com';
 
 async function login(credentials, register=false) {
     return await axios.post(api_url + (register? "/register" : "/login"), credentials).then((res) => {
