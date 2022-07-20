@@ -6,7 +6,6 @@ class SideBar extends React.Component {
         super(props);
 
         this.state = {
-            dark: this.props.dark,
             current: "fcc96e",
             colors: [
                 "fcc96e", "ff9b74", "b591ff", "00d5ff", "e6ef93"
@@ -53,11 +52,11 @@ class SideBar extends React.Component {
                         </ul>
                     </div>
                     <button className={"mt-auto p-3 rounded-full flex items-center text-sm darkb"} onClick={() => {
-                        this.setState({dark: !this.state.dark})
+                        this.props.toggleTheme(!this.props.dark)
                         document.getElementById("root").classList.toggle("dark")
                     }}>
                         {
-                            this.state.dark ?
+                            this.props.dark ?
                                 <>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentcolor" strokeWidth={2}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />

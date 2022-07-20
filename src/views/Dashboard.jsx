@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
         super(props)
 
         this.state = {
-            dark: document.getElementById("root").classList.contains("dark"),
+            dark: Boolean(localStorage.getItem('dark-theme') === 'true'),
             /*
             {
                     id: 1,
@@ -89,6 +89,8 @@ class Dashboard extends React.Component {
         this.closeNote = this.closeNote.bind(this);
         this.reload = this.reload.bind(this);
         this.logout = this.logout.bind(this);
+        this.toggleTheme = this.toggleTheme.bind(this);
+        this.search = this.search.bind(this);
     }
 
     newNote(data) {
@@ -104,6 +106,10 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
+        if(this.state.dark) {
+            document.getElementById('root').classList.add('dark');
+        }
+
         getNotes().then((res) => {
             console.log(res);
             this.setState({notes: res, notesLoaded: true});
@@ -130,10 +136,22 @@ class Dashboard extends React.Component {
         }
     }
 
+    toggleTheme(mode) {
+        localStorage.setItem("dark-theme", mode);
+        this.setState({dark: mode});
+    }
+
     logout() {
         logoutUser().then((res) => {
             if(res) window.location.href = "./";
         })
+    }
+
+    search(query) {
+        getNotes(null, query === '' ? null : query).then((res) => {
+            console.log(res);
+            this.setState({notes: res, notesLoaded: true});
+        });
     }
 
 
@@ -145,10 +163,10 @@ class Dashboard extends React.Component {
                         this.state.visibleNote &&
                         <Note new={false} data={this.state.current} togglePop={this.closeNote} reload={this.reload}/>
                     }
-                    <SideBar dark={this.state.dark} reload={this.reload} newNote={this.newNote}/>
+                    <SideBar dark={this.state.dark} reload={this.reload} newNote={this.newNote} toggleTheme={this.toggleTheme}/>
                     <div className={"flex flex-col mx-8 items-center max-h-screen overflow-clip w-full relative"}>
                         <div className={"flex justify-between m-2 items-center w-full top-bar"}>
-                            <Search/>
+                            <Search search={this.search}/>
                             <button onClick={() => {
                                 this.setState({menuToggle: !this.state.menuToggle})
                             }} className={"border-2 rounded-full mx-4 flex items-center"}>

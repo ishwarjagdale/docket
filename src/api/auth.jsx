@@ -4,7 +4,7 @@ import {notify} from "../components/notifier";
 axios.defaults.withCredentials = true;
 let token = null;
 let inProgress = false;
-let api_url = 'https://docket-note.herokuapp.com';
+let api_url = '';
 
 async function login(credentials, register=false) {
     return await axios.post(api_url + (register? "/register" : "/login"), credentials).then((res) => {
@@ -51,8 +51,15 @@ function verifyUser() {
     return user;
 }
 
-async function getNotes(noteId=null) {
-    return await axios.get(api_url + (noteId ? `/api/notes/${noteId}` : "/api/notes")).then((res) => {
+async function getNotes(noteId=null, query=null) {
+    let url = "/api/notes";
+    if(noteId) {
+        url = `/api/notes/${noteId}`
+    }
+    if(query) {
+        url = `/api/notes?q=${query}`
+    }
+    return await axios.get(api_url + url).then((res) => {
         if(res.status === 200) {
             return res.data;
         }

@@ -39,11 +39,10 @@ class NoteCard extends React.Component {
                             this.props.data.title.length ? this.props.data.title : "__no_title__"
                         }
                     </p>
-
                     <div className={"flex text-gray-800 justify-between z-10 items-center"}>
                         <span>
                             {
-                                this.props.data.date
+                                new Date(Date.parse(this.props.data.date_modified)).toDateString()
                             }
                         </span>
                         {

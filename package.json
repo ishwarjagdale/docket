@@ -42,5 +42,6 @@
   },
   "engines": {
     "node": "16.x"
-  }
+  },
+  "proxy": "https://docket-note.herokuapp.com"
 }
